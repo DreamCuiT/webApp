@@ -3,18 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+//全局css
 import "./assets/css/mypage.css"
+import "./assets/font/publicIconfont/iconfont.css"
+import "./assets/css/swiper.css"
+
 
 Vue.config.productionTip = false
-
-/* eslint-disable no-new */
-// Vue.component("wph-specialty-today",{
-//   template:"<div><h3>今日t</h3><img/></div>"
-// })
 
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<app></app>'
 })

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-      <div class="nav-component" v-for="i in [1,2]">
-          <a href="#"  v-for="index in [1,2,3,4,5]">
+      <div class="nav-component" v-for="i in [1,2]" :key="i.id">
+          <a href="#"  v-for="index in [1,2,3,4,5]" :key="index.id">
               <img :src="navImg" alt="">
           </a>
       </div>
@@ -44,7 +44,6 @@ export default {
   components:{
       Discount
   }
-
 }
 </script>
     
