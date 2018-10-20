@@ -1,14 +1,16 @@
 <template>
       <div class="brand"> 
-          <ul class="brand-nav-ul">
-              <li v-for="(itme,index) of brandNav" :key="index" @click="topColor(index)">
-                  <div class="brand-nav-class">
-                      <div  :class="itme.class"  :style="{webkitMaskImage:'url('+itme.imgSrc+')'}" style="height:.24rem;width:.24rem;-webkit-mask-size: 100% 100%;margin:0 auto;"></div>
-                      <!-- <img :src="itme.imgSrc" style="width:.24rem;height:.24rem;margin:0 auto;"> -->
-                     <span :class="itme.classFont">{{itme.text}}</span>
-                  </div>
-              </li>
-          </ul>
+         <!-- <div>
+              <ul class="brand-nav-ul" :class="navShow">
+                <li v-for="(itme,index) of brandNav" :key="index" @click="topColor(index) ">
+                    <router-link :to="'#'+itme.href" class="anchor" ></router-link>
+                    <div class="brand-nav-class">
+                        <div  :class="itme.class"  :style="{webkitMaskImage:'url('+itme.imgSrc+')'}" style="height:.24rem;width:.24rem;-webkit-mask-size: 100% 100%;margin:0 auto;"></div>
+                        <span :class="itme.classFont">{{itme.text}}</span>
+                    </div>
+                </li>
+            </ul>   
+         </div> -->
           <div style="width: 100%;height:0.005rem;background: #585c64; opacity:.3"></div>
           <div class="swipreBox">
                <div class="swiper-container">
@@ -22,18 +24,24 @@
             </div>
           </div>
           <div class="brandSortBox">
-              <h2 class="brandSortBox-title">猜你喜欢<div><span style="font-size:.12rem;color:#585c64;margin-right:.05rem;vertical-align: top;">换一换</span><img src="../assets/brandImgs/next.png" style="width:.16rem;height:.16rem;float:right"></div></h2>
+              <h2 class="brandSortBox-title" id="useLove">猜你喜欢<div @click="goNext"><span style="font-size:.12rem;color:#585c64;margin-right:.05rem;vertical-align: top;">换一换</span><img src="../assets/brandImgs/next.png" style="width:.16rem;height:.16rem;float:right"></div></h2>
               <ul class="brandSortBox-ul">
                   <li v-for="(itme,index) of brandshop" :key="index">
                      <div class="brandSortBox-item" v-for="(m,indexA) of brandshop[index].itmes" :key="indexA">
-                         <div>
-                              <img :src="m.imgs.brandTop" class="shop-itme ">
+                         <div style="overflow:hidden;height:.32rem;width:.64rem;position:relative;margin-top:.32rem;">
+                             <div :class="shophidden" class="moveBox">
+                                    <img :src="m.imgs.brandTap" class="shop-itme" :class="shopshow">
+                                <!-- </div>
+                                <div> -->
+                                    <img :src="m.imgs.brand" class="shop-itme shopshow" >
+                             </div>
                          </div>
-                         <div>
-                             <img :src="m.imgs.brand" class="shop-itme shop-show">
-                         </div>
-                         <span class="die">{{m.brankName.textTap}}</span>
-                         <span class="die die-show">{{m.brankName.text}}</span>
+                        <div style="overflow:hidden;height:.16rem;width:.64rem;position:relative;margin-top:.16rem;margin-bottom:.16rem">
+                           <div class="moveBox" :class="shophidden">
+                                 <span class="die" :class="shopshow">{{m.brankName.textTap}}</span>
+                                <span class="die shopshow">{{m.brankName.text}}</span>
+                           </div>
+                        </div>
                      </div>
                   </li>
                   <!-- <li>
@@ -70,8 +78,8 @@
                   </li> -->
               </ul>
           </div>
-          <div class="brandSortBox"  v-for="(itme,index) of brandSortBoxData" :key="index">
-                <h2 class="brandSortBox-title">{{itme.titleText}}<div><span style="font-size:.12rem;color:#585c64;margin-right:.05rem;vertical-align: top;">更多</span><img src="../assets/brandImgs/go.png" style="width:.08rem;height:.08rem;float:right;margin-top: 5px"></div></h2>
+          <div class="brandSortBox" :id="itme.id" v-for="(itme,index) of brandSortBoxData" :key="index">
+                <h2 class="brandSortBox-title" >{{itme.titleText}}<div><span style="font-size:.12rem;color:#585c64;margin-right:.05rem;vertical-align: top;">更多</span><img src="../assets/brandImgs/go.png" style="width:.08rem;height:.08rem;float:right;margin-top: 5px"></div></h2>
                    <ul class="brandSortBox-ul">
                         <li v-for="(itmeLi,i) of brandSortBoxData[index].brandSortBoxItme" :key="i">
                             <div class="brandSortBox-item" v-for="(itmeImg,subImg) of brandSortBoxData[index].brandSortBoxItme[i].imgs" :key="subImg">
@@ -85,125 +93,144 @@
 
 <script>
 import Swiper  from "../../static/swiper.js"
-// import brandImg from "../../static/brandImg/imgSrcArr.js"
 
 export default {
   name: 'WphGoodsBrand',
   data(){
       return{
           brandShow:true,
-        //   defaultColor:"#585c64",
-        //   pitchColor:"#e83a9b",
-          brandNav:[
-              {
-                  text:"猜你喜欢",
-                  imgSrc:require("../assets/brandImgs/useLove.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-              {
-                  text:"女装",
-                  imgSrc:require("../assets/brandImgs/woman.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"鞋靴",
-                  imgSrc:require("../assets/brandImgs/shoe.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"美妆",
-                  imgSrc:require("../assets/brandImgs/beauty.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"母婴",
-                  imgSrc:require("../assets/brandImgs/mom.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"男装",
-                  imgSrc:require("../assets/brandImgs/man.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"精品",
-                  imgSrc:require("../assets/brandImgs/watch.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"运动户外",
-                  imgSrc:require("../assets/brandImgs/sport.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"内衣",
-                  imgSrc:require("../assets/brandImgs/Underwear.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"家具家访",
-                  imgSrc:require("../assets/brandImgs/suitepng.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"家电数码",
-                  imgSrc:require("../assets/brandImgs/iphone.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"维风尚",
-                  imgSrc:require("../assets/brandImgs/style.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"箱包",
-                  imgSrc:require("../assets/brandImgs/bag.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"唯品生活",
-                  imgSrc:require("../assets/brandImgs/lifepng.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"唯品·奢",
-                  imgSrc:require("../assets/brandImgs/shechi.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-               {
-                  text:"唯品国际",
-                  imgSrc:require("../assets/brandImgs/international.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-              {
-                  text:"唯品牌",
-                  imgSrc:require("../assets/brandImgs/brank.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              },
-              {
-                  text:"唯品优选",
-                  imgSrc:require("../assets/brandImgs/good.png"),
-                  class:"defaultColor",
-                  classFont:"defaultFontColor"
-              }
-          ],
+          navShow:"",
+          pitchColor:"#e83a9b",
+        //   brandNav:[
+        //       {
+        //           href:"useLove",
+        //           text:"猜你喜欢",
+        //           imgSrc:require("../assets/brandImgs/useLove.png"),
+        //           class:"pitchColor",
+        //           classFont:"pitchFontColor"
+        //       },
+        //       {
+        //           href:"woman",
+        //           text:"女装",
+        //           imgSrc:require("../assets/brandImgs/woman.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //           href:"shoe",
+        //           text:"鞋靴",
+        //           imgSrc:require("../assets/brandImgs/shoe.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"beauty",
+        //           text:"美妆",
+        //           imgSrc:require("../assets/brandImgs/beauty.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"mom",
+        //           text:"母婴",
+        //           imgSrc:require("../assets/brandImgs/mom.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"man",
+        //           text:"男装",
+        //           imgSrc:require("../assets/brandImgs/man.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"watch",
+        //           text:"精品",
+        //           imgSrc:require("../assets/brandImgs/watch.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"sport",
+        //           text:"运动户外",
+        //           imgSrc:require("../assets/brandImgs/sport.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"Underwear",
+        //           text:"内衣",
+        //           imgSrc:require("../assets/brandImgs/Underwear.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"suitepng",
+        //           text:"家具家访",
+        //           imgSrc:require("../assets/brandImgs/suitepng.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"iphone",
+        //           text:"家电数码",
+        //           imgSrc:require("../assets/brandImgs/iphone.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"style",
+        //           text:"维风尚",
+        //           imgSrc:require("../assets/brandImgs/style.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"bag",
+        //           text:"箱包",
+        //           imgSrc:require("../assets/brandImgs/bag.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"lifepng",
+        //           text:"唯品生活",
+        //           imgSrc:require("../assets/brandImgs/lifepng.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"shechi",
+        //           text:"唯品·奢",
+        //           imgSrc:require("../assets/brandImgs/shechi.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //        {
+        //            href:"international",
+        //           text:"唯品国际",
+        //           imgSrc:require("../assets/brandImgs/international.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //       {
+        //           href:"brank",
+        //           text:"唯品牌",
+        //           imgSrc:require("../assets/brandImgs/brank.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       },
+        //       {
+        //           href:"good",
+        //           text:"唯品优选",
+        //           imgSrc:require("../assets/brandImgs/good.png"),
+        //           class:"defaultColor",
+        //           classFont:"defaultFontColor"
+        //       }
+        //   ],
+          shophidden:"",
+          shopshow:"",
           brandshop:[
                         {
                             itmes:[
@@ -283,6 +310,7 @@ export default {
                 ],
           brandSortBoxData:[
                 {   
+                    id:"woman",
                     titleText:"女装",
                     brandSortBoxItme:[
                         {
@@ -316,67 +344,69 @@ export default {
                     ]
                 },
                 {   
+                    id:"man",
                     titleText:"男装",
                     brandSortBoxItme:[
                         {
                             imgs:[
-                                {imgSrc:require("../assets/brandImgs/women-1.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-2.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-3.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-1.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-2.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-3.jpg")},
                             ]
                         },
                         {
                             imgs:[
-                                {imgSrc:require("../assets/brandImgs/women-4.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-5.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-6.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-4.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-5.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-6.jpg")},
                             ]
                         },
                         {
                             imgs:[
-                                {imgSrc:require("../assets/brandImgs/women-7.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-8.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-9.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-7.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-8.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-9.jpg")},
                             ]
                         },
                         {
                             imgs:[
-                                {imgSrc:require("../assets/brandImgs/women-10.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-11.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-12.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-10.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-11.jpg")},
+                                {imgSrc:require("../assets/brandImgs/man-12.jpg")},
                             ]
                         }
                     ]
                 },
                 {   
+                    id:"shoe",
                     titleText:"鞋靴",
                     brandSortBoxItme:[
                         {
                             imgs:[
-                                {imgSrc:require("../assets/brandImgs/women-1.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-2.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-3.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-1.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-2.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-3.jpg")},
                             ]
                         },
                         {
                             imgs:[
-                                {imgSrc:require("../assets/brandImgs/women-4.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-5.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-6.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-4.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-5.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-6.jpg")},
                             ]
                         },
                         {
                             imgs:[
-                                {imgSrc:require("../assets/brandImgs/women-7.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-8.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-9.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-7.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-8.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-9.jpg")},
                             ]
                         },
                         {
                             imgs:[
-                                {imgSrc:require("../assets/brandImgs/women-10.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-11.jpg")},
-                                {imgSrc:require("../assets/brandImgs/women-12.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-10.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-11.jpg")},
+                                {imgSrc:require("../assets/brandImgs/shoe-12.jpg")},
                             ]
                         }
                     ]
@@ -399,6 +429,7 @@ export default {
        //触发当前实例上的事件。参数都会传给父组件的监听器回调。父组件就获取到子组件data，mentods
         this.$emit("show-All-Brand",this.brandShow)
     },
+    //nav
     topColor(index){
         console.log(index)
         for(let i in this.brandNav){
@@ -408,7 +439,48 @@ export default {
             this.brandNav[n].classFont = "defaultFontColor";
         }
         this.brandNav[index].class= "pitchColor"
-        this.brandNav[index].classFont= "pitchFontColor"
+        this.brandNav[index].classFont= "pitchFontColor" 
+
+         var anchor = this.$el.querySelector('#'+this.brandNav[index].href)
+        document.documentElement.scrollTop = anchor.offsetTop
+        document.body.scrollTop = anchor.offsetTop
+        anchor.scrollIntoView(true);
+        this.navShow = "navShow"
+    },
+    goNext(){
+        //点击添加样式
+       this.shophidden = 'shophidden';
+       let that = this;
+       let arr = [];
+       //异步改变图片
+        var p = new Promise(function (resolve, reject) {
+            for(let i=0; i<that.brandshop.length; i++){
+                // console.log(that.brandshop[i])
+                arr.push(that.brandshop[i].itmes)
+            }
+            resolve(arr)
+            setTimeout(()=>{
+                //图片动画完成后，去除css
+                that.shophidden = ""
+            },300)
+        }).then(function(r){
+            //图片动画完成后，交换数据中的src
+           setTimeout(()=>{
+               for(let i=0; i<r.length; i++){
+                for(let key in r[i]){
+                    let swap =  r[i][key].imgs.brand;
+                    r[i][key].imgs.brand = r[i][key].imgs.brandTap;
+                    r[i][key].imgs.brandTap = swap;
+                    let swapText =  r[i][key].brankName.text;
+                    r[i][key].brankName.text = r[i][key].brankName.textTap;
+                    r[i][key].brankName.textTap = swapText;
+                    // console.log(r[i][key].imgs)
+                }
+            }
+           },300)
+        }).catch(function (reason) {
+                // console.log(reason)
+            });
     }
   },
   mounted(){
@@ -419,6 +491,20 @@ export default {
 </script>
 
 <style>
+html{
+    position: relative;
+}
+ /* 锚点 */
+ .anchor{
+     display:block;
+     width:100%;
+     height:100%;
+     position:absolute;
+     -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-focus: none;
+    -moz-user-select: none;
+ }
  /* nav-color */
  .defaultColor{
      background-color:#585c64;
@@ -448,6 +534,10 @@ export default {
         white-space: nowrap;
         overflow-x:auto;
         overflow-y:hidden;
+        background-color:#fff;
+        visibility:visible;
+        opacity:1;
+        z-index: 10;
         /* border-bottom:.005rem solid #585c64; */
     }
      .brand-nav-ul::-webkit-scrollbar{
@@ -456,6 +546,7 @@ export default {
     }
      .brand-nav-ul>li{
          display:inline-block;
+         position:relative;
      }
     .brand-nav-class{
         width:.65rem;
@@ -493,6 +584,7 @@ export default {
     /* brandSortBox-title */
     .brandSortBox{
         padding-top:.05rem;
+        /* position: relative; */
     }
     .brandSortBox-title{
         font-size:.14rem;
@@ -503,6 +595,7 @@ export default {
         display:flex;
         justify-content: space-between;
         align-items:center;
+         /* position:absolute; */
     }
     .brandSortBox-ul{
         font-size:0;
@@ -519,26 +612,61 @@ export default {
         /* padding:.32rem 0 .16rem 0; */
         margin-left:.02rem;
         margin-bottom:.02rem;
-        background-color:#f3f3f3
+        background-color:#f3f3f3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* padding-top:.32rem;
+        padding-bottom:.16rem; */
+    }
+    .moveBox{
+        height:100%;
+        width:.64rem;
+        position:relative;
+        top:-100%
     }
     .shop-itme {
-        display: none;
        width:.64rem;
        height:.32rem;
-       margin:.16rem auto 0;
+       margin:.0rem auto 0;
+       position: absolute;
     }
-    .shop-show{
+    .shophidden{
+       visibility: visible;
+       animation: move .3s none;
+    }
+    @keyframes move {
+        0%{
+             transform:translateY(0);
+        }
+        99%{
+             transform:translateY(100%);
+        }
+        100%{
+             transform:translateY(0);
+        }
+    }
+    .shopshow{
         display: block;
+        transform:translateY(100%);
+        transition: transform 1s;
     }
     .die{
         font-size:.12rem;
         color:#98989f; 
-        display:none;
+        line-height:inherit;
+        transform:translateY(0);
+        /* position: absolute; */
+
+    }
+    .die-hidden{
+
     }
     .die-show{
         display:block;
-        margin-top:.16rem;
-        margin-bottom:.16rem;
+         transform:translateY(100%);
+        transition: transform 1s;
     }
     .brandImg{
         width:1.13rem;

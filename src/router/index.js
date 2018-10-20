@@ -44,5 +44,12 @@ export default new Router({
       }]
     }
   ],
-  mode:"history"
+  mode:"history",
+  srcollBehavior(to,from,savedPosition){
+    if(to.hash){
+     return {
+       selector:to.hash
+      }
+    }
+  },
 })
