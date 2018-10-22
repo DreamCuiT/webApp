@@ -7,128 +7,17 @@
             </ul>
           </div>
           <div class="sort-right">
-            <div class="sort-topImg-right">
-              <!-- <img src="" alt=""> -->
-            </div>
-            <h2 class="sort-title-right">猜你想找<span class="host-goods">热销榜 <i class="iconfont icon-you iconleft" style="font-size:.07rem;"></i></span></h2>
-            <div class="goods-pro">
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div></div>
-            </div>
-            <h2 class="sort-title-right">猜你想找<span class="host-goods">热销榜 <i class="iconfont icon-you iconleft" style="font-size:.07rem;"></i></span></h2>
-            <div class="goods-pro">
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div></div>
-            </div>
-            <h2 class="sort-title-right">猜你想找<span class="host-goods">热销榜 <i class="iconfont icon-you iconleft" style="font-size:.07rem;"></i></span></h2>
-            <div class="goods-pro">
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div>
-                    <img src="../assets/sortImgs/goods-1.png" style="width:.6rem;height:.6rem;margin:0 auto">
-                    <span>护肤套装</span>
-                  </div>
-                  <div></div>
+            <div v-for="(itme,index) of sortRightData" :key="index">
+               <div class="sort-topImg-right">
+                <!-- <img src="" alt=""> -->
+              </div>
+              <h2 class="sort-title-right">{{itme.title}}<span v-if="itme.hot" class="host-goods">热销榜 <i class="iconfont icon-you iconleft" style="font-size:.07rem;"></i></span></h2>
+              <div class="goods-pro">
+                    <div v-for="(goods,sub) of sortRightData[index].goodsPro" :key="sub">
+                      <img :src="goods.goodsImg" style="width:.55rem;height:.65rem;margin:0 auto">
+                      <span>护肤套装</span>
+                    </div>
+              </div>
             </div>
           </div>
         </div>
@@ -146,7 +35,171 @@ export default {
       goodsSortList:[{text:"为你推荐",class:"pitch"},{text:"女装",class:"noPitch"},{text:"男装",class:"noPitch"},{text:"女内衣",class:"noPitch"},{text:"女鞋",class:"noPitch"},{text:"男鞋",class:"noPitch"},{text:"箱包皮具",class:"noPitch"},{text:"手表配饰",class:"noPitch"},{text:"护肤彩妆",class:"noPitch"},{text:"人护理",class:"noPitch"},{text:"母婴",class:"noPitch"},{text:"户外运动",class:"noPitch"},{text:"手机数码",class:"noPitch"},{text:"家用电器",class:"noPitch"},{text:"家具家纺",class:"noPitch"},{text:"生活超市",class:"noPitch"},{text:"唯品国际",class:"noPitch"},{text:"唯品优选",class:"noPitch"},{text:"唯品·奢",class:"noPitch"},{text:"唯品金融",class:"noPitch"},{text:"唯品医药",class:"noPitch"},{text:"图文娱乐",class:"noPitch"}],
       noPitch:"noPitch",
       pitch:"pitch",
-       showSort:false
+      showSort:false,
+      sortRightData:[
+        {
+          hot:false,
+          title:"猜你想找",
+          goodsPro:[
+            {
+              goodsImg:require("../assets/sortImgs/goods-1.png"),
+              goodsName:"国际美妆"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-2.png"),
+              goodsName:"休闲裤"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-3.png"),
+              goodsName:"男士运动鞋"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-4.png"),
+              goodsName:"长袖T恤"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-5.png"),
+              goodsName:"连衣裙"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-6.png"),
+              goodsName:"男士卫衣"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-7.png"),
+              goodsName:"女士休闲鞋"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-8.png"),
+              goodsName:"短靴"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-9.png"),
+              goodsName:"男士夹克"
+            },
+          ] 
+        },
+        {
+          hot:false,
+          title:"你可能还喜欢",
+          goodsPro:[
+            {
+              goodsImg:require("../assets/sortImgs/goods-1.png"),
+              goodsName:"男士牛仔裤"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-2.png"),
+              goodsName:"衬衫"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-3.png"),
+              goodsName:"男袜"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-4.png"),
+              goodsName:"水乳精华"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-5.png"),
+              goodsName:"海外如唇膏"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-6.png"),
+              goodsName:"防嗮隔离"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-7.png"),
+              goodsName:"卫衣"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-8.png"),
+              goodsName:"外套"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-9.png"),
+              goodsName:"T恤"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-1.png"),
+              goodsName:"单鞋"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-2.png"),
+              goodsName:"男士内裤"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-3.png"),
+              goodsName:"女士内裤"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-4.png"),
+              goodsName:"聚拢文胸"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-5.png"),
+              goodsName:"毛衣"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-6.png"),
+              goodsName:"大衣"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-7.png"),
+              goodsName:"跑步鞋"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-8.png"),
+              goodsName:"休闲运动鞋"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-9.png"),
+              goodsName:"运动裤"
+            },
+          ] 
+        },
+        {
+          hot:false,
+          title:"精选品牌",
+          goodsPro:[
+            {
+              goodsImg:require("../assets/sortImgs/goods-1.png"),
+              goodsName:"兰芝"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-2.png"),
+              goodsName:"森马"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-3.png"),
+              goodsName:"骆驼"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-4.png"),
+              goodsName:"韩都衣舍"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-5.png"),
+              goodsName:"百丽"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-6.png"),
+              goodsName:"卓诗尼"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-7.png"),
+              goodsName:"江南布衣"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-8.png"),
+              goodsName:"都市丽人"
+            },
+            {
+              goodsImg:require("../assets/sortImgs/goods-9.png"),
+              goodsName:"耐克"
+            },
+          ] 
+        },
+      ]
     }
   },
   methods:{
@@ -278,7 +331,7 @@ export default {
         width: 0 !important 
 		}
     .sort-title-right{
-      float:right;
+      /* float:right; */
       margin:0 .28rem;
       padding-top:.2rem;
       font-size:.14rem;
@@ -303,6 +356,7 @@ export default {
       text-align:center;
       font-size:0; 
       display:inline-block;
+      margin:0 .06rem;
     }
     .goods-pro>div>span{
       font-size:.07rem;

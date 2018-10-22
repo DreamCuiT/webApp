@@ -6,27 +6,29 @@
               <p><span  :class='clickShow'><router-link to="/sorts/" style="color:inherit">分类</router-link></span><span   :class='clickHidden'><router-link to='/brand' style="color:inherit">品牌</router-link></span></p>
           </div>
           <div class="icon-font"><router-link to="/page"><i class="iconfont icon-home"></i></router-link></div>
-        </div>
-          <div class="searchBox">
+      </div>
+      <div v-if="scrollEvent">
+           <div class="searchBox">
                 <router-link to="/goodsSearch">
-                          <img :src="search">
-                          <span class="titleText">搜索品牌或商品</span>
-                          <router-link to="" class="allBrand" v-if="show">全部品牌</router-link>
-                        </router-link>
-                </div>
-                <div v-if="show">
-                      <ul class="brand-nav-ul" :class="navShow">
-                        <li v-for="(itme,index) of brandNav" :key="index" @click="topColor(index) ">
-                            <router-link :to="'#'+itme.href" class="anchor" ></router-link>
-                            <div class="brand-nav-class">
-                                <div  :class="itme.class"  :style="{webkitMaskImage:'url('+itme.imgSrc+')'}" style="height:.24rem;width:.24rem;-webkit-mask-size: 100% 100%;margin:0 auto;"></div>
-                                <span :class="itme.classFont">{{itme.text}}</span>
-                            </div>
-                        </li>
-                    </ul>   
-                </div>
+                    <img :src="search">
+                    <span class="titleText">搜索品牌或商品</span>
+                    <router-link to="" class="allBrand" v-if="show">全部品牌</router-link>
+                </router-link>
+            </div>
+            <div v-if="show">
+                    <ul class="brand-nav-ul" :class="navShow">
+                    <li v-for="(itme,index) of brandNav" :key="index" @click="topColor(index) ">
+                        <router-link :to="'#'+itme.href" class="anchor" ></router-link>
+                        <div class="brand-nav-class">
+                            <div  :class="itme.class"  :style="{webkitMaskImage:'url('+itme.imgSrc+')'}" style="height:.24rem;width:.24rem;-webkit-mask-size: 100% 100%;margin:0 auto;"></div>
+                            <span :class="itme.classFont">{{itme.text}}</span>
+                        </div>
+                    </li>
+                </ul>   
+            </div>
+      </div>
           <!-- 监听子组件的show-all-brand事件，执行brandshow（） -->
-          <router-view @show-All-Brand="brandshow" @show-srot="sortShow"></router-view> 
+      <router-view @show-All-Brand="brandshow" @show-srot="sortShow"></router-view> 
   </div>
 </template>
 
@@ -44,6 +46,8 @@ export default {
       clickShow:"clickShow",
       clickHidden:"brant",
       show:false,
+      scrollEvent:true,
+      clickNav:false,
       navShow:"",
       brandNav:[
               {
@@ -191,14 +195,24 @@ export default {
       }
     },
     brandshow(brandShow){
-      this.show = brandShow
-      this.cheakbox() 
+    this.show = brandShow[0];//判断显示那个页面
+     console.log(this.clickNav?"点击":"没有点击",brandShow[1]?"没有滚动":"滚动了")
+     if(this.clickNav == true||brandShow[1] == true){//如果点击，或者没有滚动条事件
+        this.clickNav = false//点击事件初始化
+        this.scrollEvent = true;//不隐藏
+     }
+     else if(brandShow[1] == false){//发生滚动事件    
+        this.clickNav = false//点击事件初始化
+        this.scrollEvent = brandShow[1];//隐藏
+     }
+         this.cheakbox();
     },
     sortShow(showSort){
       this.show = showSort
       this.cheakbox() 
     },
      topColor(index){
+         this.clickNav = true;
         for(let i in this.brandNav){
             this.brandNav[i].class = "defaultColor";
         }

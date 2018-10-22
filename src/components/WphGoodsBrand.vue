@@ -1,5 +1,5 @@
 <template>
-      <div class="brand"> 
+      <div class="brand" ref="scrollBox"> 
          <!-- <div>
               <ul class="brand-nav-ul" :class="navShow">
                 <li v-for="(itme,index) of brandNav" :key="index" @click="topColor(index) ">
@@ -80,14 +80,15 @@
           </div>
           <div class="brandSortBox" :id="itme.id" v-for="(itme,index) of brandSortBoxData" :key="index">
                 <h2 class="brandSortBox-title" >{{itme.titleText}}<div><span style="font-size:.12rem;color:#585c64;margin-right:.05rem;vertical-align: top;">更多</span><img src="../assets/brandImgs/go.png" style="width:.08rem;height:.08rem;float:right;margin-top: 5px"></div></h2>
-                   <ul class="brandSortBox-ul">
-                        <li v-for="(itmeLi,i) of brandSortBoxData[index].brandSortBoxItme" :key="i">
-                            <div class="brandSortBox-item" v-for="(itmeImg,subImg) of brandSortBoxData[index].brandSortBoxItme[i].imgs" :key="subImg">
-                                <img :src="itmeImg.imgSrc" class="brandImg">
-                            </div>
-                        </li>   
-                    </ul>    
+                <ul class="brandSortBox-ul">
+                    <li v-for="(itmeLi,i) of brandSortBoxData[index].brandSortBoxItme" :key="i">
+                        <div class="brandSortBox-item" v-for="(itmeImg,subImg) of brandSortBoxData[index].brandSortBoxItme[i].imgs" :key="subImg">
+                            <img :src="itmeImg.imgSrc" class="brandImg">
+                        </div>
+                    </li>   
+                </ul>    
           </div>
+          <div :class="goTopClass" @click="goTop"></div>
       </div>  
 </template>
 
@@ -231,6 +232,8 @@ export default {
         //   ],
           shophidden:"",
           shopshow:"",
+          goTopClass:"",
+          scrollEvent:true,
           brandshop:[
                         {
                             itmes:[
@@ -427,26 +430,27 @@ export default {
     },
    showBrand(){
        //触发当前实例上的事件。参数都会传给父组件的监听器回调。父组件就获取到子组件data，mentods
-        this.$emit("show-All-Brand",this.brandShow)
+        this.$emit("show-All-Brand",[this.brandShow,this.scrollEvent])
     },
     //nav
-    topColor(index){
-        console.log(index)
-        for(let i in this.brandNav){
-            this.brandNav[i].class = "defaultColor";
-        }
-         for(let n in this.brandNav){
-            this.brandNav[n].classFont = "defaultFontColor";
-        }
-        this.brandNav[index].class= "pitchColor"
-        this.brandNav[index].classFont= "pitchFontColor" 
+    // topColor(index){
+    //     console.log(index)
+    //     for(let i in this.brandNav){
+    //         this.brandNav[i].class = "defaultColor";
+    //     }
+    //      for(let n in this.brandNav){
+    //         this.brandNav[n].classFont = "defaultFontColor";
+    //     }
+    //     this.brandNav[index].class= "pitchColor"
+    //     this.brandNav[index].classFont= "pitchFontColor" 
 
-         var anchor = this.$el.querySelector('#'+this.brandNav[index].href)
-        document.documentElement.scrollTop = anchor.offsetTop
-        document.body.scrollTop = anchor.offsetTop
-        anchor.scrollIntoView(true);
-        this.navShow = "navShow"
-    },
+    //      var anchor = this.$el.querySelector('#'+this.brandNav[index].href)
+    //     document.documentElement.scrollTop = anchor.offsetTop
+    //     document.body.scrollTop = anchor.offsetTop
+    //     console.log(anchor)
+    //     anchor.scrollIntoView(true);
+    //     this.navShow = "navShow"
+    // },
     goNext(){
         //点击添加样式
        this.shophidden = 'shophidden';
@@ -481,11 +485,32 @@ export default {
         }).catch(function (reason) {
                 // console.log(reason)
             });
+    },
+    //监听scroll
+    listenScroll(){
+    let that = this;
+    //获取注册过ref的Dom，添加onscroll事件
+    that.$refs.scrollBox.addEventListener("scroll",function(){
+          if(that.$refs.scrollBox.scrollTop>1000){
+              that.scrollEvent = false;
+              that.goTopClass = "goTopShow";
+              that.showBrand()
+          }else{
+              that.scrollEvent = true;
+              that.goTopClass = "goTopHidden";
+              that.showBrand()  
+          }
+      },true)
+    },
+    //goTop
+    goTop(){
+        this.$refs.scrollBox.scrollTop = 0
     }
   },
   mounted(){
       this.swiperSlide()
       this.showBrand()
+      this.listenScroll()
   },
 }
 </script>
@@ -671,5 +696,32 @@ html{
     .brandImg{
         width:1.13rem;
         height:1.12rem;
+    }
+    /* goTop */
+    .goTopShow{
+        width:.44rem;
+        height:.44rem;
+        background:url(../assets/brandImgs/goTop.png) no-repeat;
+        background-size:100% 100%;
+        position:fixed;
+        bottom:-.44rem;
+        right:.15rem;
+        z-index: 10;
+        display: block;
+        transform: translateY(-120%);
+        transition: transform .5s;
+    }
+    .goTopHidden{
+        width:.44rem;
+        height:.44rem;
+        background:url(../assets/brandImgs/goTop.png) no-repeat;
+        background-size:100% 100%;
+        position:fixed;
+        bottom:-.44rem;
+        right:.15rem;
+        z-index: 10;
+        display: block;
+        transform: translateY(0%);
+        transition: transform .5s;
     }
 </style>
