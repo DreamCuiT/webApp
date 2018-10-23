@@ -1,7 +1,9 @@
 <template>
-  <div>
-      <head-top></head-top>
-      <wph-public-content></wph-public-content>
+  <div ref="scrollEvent" >
+     <div :class="scrollClass">
+        <head-top></head-top>
+        <wph-public-content></wph-public-content>
+     </div>
       <div class="main">
           <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -14,7 +16,7 @@
           </div>
          <wph-specialty-today></wph-specialty-today>
       </div>
-      <wph-public-footer></wph-public-footer>
+      <!-- <wph-public-footer></wph-public-footer> -->
   </div>
 </template>
 
@@ -24,7 +26,7 @@ import WphSpecialtyToday from "../components/WphSpecialtyToday"
 import img from "../assets/imgs/big-img.jpg"
 import headTop from "../components/WphPublicHeader"
 import WphPublicContent from "../components/WphPublicContent"
-import WphPublicFooter from "../components/WphPublicFooter"
+// import WphPublicFooter from "../components/WphPublicFooter"
 import Swiper  from "../../static/swiper.js"
 
 //slot
@@ -43,7 +45,8 @@ export default {
   data(){
    return{
       img:img,
-      imgArr:[img,img,img]
+      imgArr:[img,img,img],
+      scrollClass:""
    }
   },
    methods:{
@@ -55,6 +58,11 @@ export default {
           el: '.swiper-pagination',
         },
       })
+    },
+    scrollEvent(){
+        if(this.$refs.scrollEvent.scrollTop>10){
+          this.scrollClass = "scrollClass"
+        }
     }
   },
   mounted(){
@@ -65,7 +73,7 @@ export default {
     WphSpecialtyToday,
     headTop,
     WphPublicContent,
-    WphPublicFooter
+    // WphPublicFooter
   }
 }
 </script>

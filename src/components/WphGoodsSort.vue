@@ -211,7 +211,26 @@ export default {
     }, 
     sortShow(){
         this.$emit("show-srot",this.showSort)
-    }
+    },
+    // myfecth(){
+    //   fetch('https://127.0.0.0:8000/goodsList') // 返回一个Promise对象
+    //   .then((res)=>{
+    //     return res.text() // res.text()是一个Promise对象
+    //   })
+    //   .then((res)=>{
+    //     console.log(res) // res是最终的结果
+    //   })
+    // }
+  },
+  created(){
+    console.log("实例创建完成")
+    fetch("http://localhost:8000/goodslist").then(res=>{
+            res.json().then(data=>{
+                // this.videosInfo=data;
+            console.log(data);
+            })
+        })
+    // this.myfecth()
   },
   mounted(){
         this.sortShow()

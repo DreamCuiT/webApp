@@ -1,25 +1,33 @@
 <template>
-    <div class="publicfooter">
+    <div class="publicfooter" v-show="showSelect">
         <div class="publicFooerTop">
           <p>早10晚8，更多特卖，敬请期待！</p>
         </div>
         <div class="publicFooterMiddle">
           <ul class="clearfix">
             <li>
-              <img src="../assets/imgs/shangxian.jpg" alt="">
-              <p>即将上线</p>
+              <router-link :to="{path:'###'}">
+                <img src="../assets/imgs/shangxian.jpg" alt="">
+                <p>即将上线</p>
+              </router-link>
             </li>
             <li>
-              <img src="../assets/imgs/tuangou.jpg" alt="">
-              <p>唯品团购</p>
+              <router-link :to="{path:'###'}">
+                <img src="../assets/imgs/tuangou.jpg" alt="">
+                <p>唯品团购</p>
+              </router-link>
             </li>
             <li>
-              <img src="../assets/imgs/baozhang.jpg" alt="">
-              <p>正品保证</p>
+              <router-link :to="{path:'###'}">
+                <img src="../assets/imgs/baozhang.jpg" alt="">
+                <p>正品保证</p>
+              </router-link>
             </li>
             <li>
-              <img src="../assets/imgs/kefu.jpg" alt="">
-              <p>唯品客服</p>
+              <router-link :to="{path:'###'}" class="noBorder">
+                <img src="../assets/imgs/kefu.jpg" alt="">
+                <p>唯品客服</p>
+              </router-link>
             </li>
           </ul>
           <div class="pfDownload">
@@ -46,10 +54,14 @@
             <img src="../assets/imgs/guohui.jpg" alt=""><p>粤公网安备 44010302000068号</p>
           </div>
         </div>
-        <div class="publicFixBoxLeft">
-          <i class="iconfont icon-cart-copy"></i>
+        <div class="publicFixBoxLeft" v-bind:class="{'publicFixBoxLefthasshop': class1}">
+          <router-link :to="{path:'/car'}">
+            <i class="iconfont icon-cart-copy"></i>
+            <p v-show="timeshow">{{this.$store.state.mtimes}}:{{this.$store.state.stimes}}</p>
+            <span v-show="timeshow">{{aa}}</span>
+          </router-link>
         </div>
-        <div class="publicFixBoxRight">
+        <div class="publicFixBoxRight" @click="gotop" v-show="gobackbox">
           <i class="iconfont icon-jiantou"></i>
         </div>
     </div>
@@ -57,11 +69,61 @@
 
 <script>
     export default {
-        name: "WphPublicFooter"
+      name: "WphPublicFooter",
+      components: {},
+      data () {
+        return {
+          showSelect: true,
+          gobackbox:false,
+          aa:"",
+          timeshow:false,
+          class1:false
+        }
+      },
+      props:["shoplengs"],
+      created(){
+      },
+      mounted () {
+        this.$root.Bus.$on('showSelect', showSelect => {
+          this.showSelect = showSelect
+          console.log(this.showSelect)
+        })
+        window.addEventListener("scroll",this.handleScroll)
+        this.init()
+        this.updatetime()
+      },
+      methods:{
+        gotop(){
+          document.documentElement.scrollTop=0;
+        },
+        handleScroll (){
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          if(scrollTop>500){
+            this.gobackbox=true
+          }else{
+            this.gobackbox=false
+          }
+        },
+        init(){
+          let bb=0
+          for(let i=0;i<this.$store.state.carshop.length;i++){
+            bb+=this.$store.state.carshop[i].goodsnumber
+          }
+          this.aa=bb
+          if(this.aa>0){
+            this.timeshow=true
+            this.class1=true
+          }
+        },
+        updatetime(){
+          this.$store.dispatch("INCTIME")
+        }
+      }
     }
 </script>
 
 <style scoped>
+  @import url('../assets/font/publicIconfont/iconfont.css');
   .publicFooerTop{
     padding: 0.2rem 0.1rem;
     border-top: 1px solid #ccc;
@@ -72,17 +134,19 @@
   }
   .publicFooterMiddle ul{
     margin-bottom: 0.36rem;
-    display:flex;
-    font-size:0;
   }
   .publicFooterMiddle li{
+    float: left;
     width: 25%;
     height: 0.57rem;
-    padding: 0.14rem 0;
-    border-right:1px solid #ccc;
   }
-  .publicFooterMiddle li:last-child{
-    border:none
+  .publicFooterMiddle li a{
+    display: block;
+    border-right:1px solid #ccc;
+    padding: 0.14rem 0;
+  }
+  .noBorder{
+    border:none!important;
   }
   .publicFooterMiddle li img{
     width: 0.38rem;
@@ -175,34 +239,65 @@
     position: fixed;
     left: 0.1rem;
     bottom: 0.2rem;
-    width: 0.42rem;
-    height: 0.45rem;
+    width: 0.40rem;
+    height: 0.40rem;
     border-radius: 50%;
     background: rgba(25,29,38,.95);
     z-index: 999;
     text-align: center;
-    line-height: 0.45rem;
+    line-height: 0.40rem;
+  }
+  .publicFixBoxLeft a{
+    display: flex;
+    justify-content: center;
+    position: relative;
   }
   .publicFixBoxLeft i{
     display: block;
     color: white;
-    font-size: 0.24rem;
+    font-size: 0.25rem;
+  }
+  .publicFixBoxLeft p{
+    width: 0.45rem;
+    height: 0.45rem;
+    font-size: 0.18rem;
+    color: white;
+  }
+  .publicFixBoxLeft span{
+    display: block;
+    width: 0.14rem;
+    height: 0.14rem;
+    background: #fbe943;
+    border-radius:50%;
+    font-size: .1rem;
+    color: black;
+    text-align: center;
+    line-height: 0.14rem;
+    position: absolute;
+    left: 0.3rem;
+    top:0.04rem;
+  }
+  .publicFixBoxLefthasshop{
+    width:0.99rem;
+    height: 0.45rem;
+    background: rgba(228,52,148,.9);
+    border-radius: 0.3rem;
   }
   .publicFixBoxRight{
     position: fixed;
     right: 0.1rem;
     bottom: 0.2rem;
-    width: 0.42rem;
-    height: 0.45rem;
+    width: 0.40rem;
+    height: 0.40rem;
     border-radius: 50%;
     background: rgba(25,29,38,.95);
     z-index: 999;
     text-align: center;
-    line-height: 0.45rem;
+    line-height: 0.40rem;
   }
   .publicFixBoxRight i{
     display: block;
     color: white;
-    font-size: 0.24rem;
+    font-size: 0.20rem;
   }
 </style>

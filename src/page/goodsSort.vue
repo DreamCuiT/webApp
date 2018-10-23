@@ -196,7 +196,7 @@ export default {
     },
     brandshow(brandShow){
     this.show = brandShow[0];//判断显示那个页面
-     console.log(this.clickNav?"点击":"没有点击",brandShow[1]?"没有滚动":"滚动了")
+    //  console.log(this.clickNav?"点击":"没有点击",brandShow[1]?"没有滚动":"滚动了")
      if(this.clickNav == true||brandShow[1] == true){//如果点击，或者没有滚动条事件
         this.clickNav = false//点击事件初始化
         this.scrollEvent = true;//不隐藏
