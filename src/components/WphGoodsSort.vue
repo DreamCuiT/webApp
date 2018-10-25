@@ -37,168 +37,6 @@ export default {
       pitch:"pitch",
       showSort:false,
       sortRightData:[
-        {
-          hot:false,
-          title:"猜你想找",
-          goodsPro:[
-            {
-              goodsImg:require("../assets/sortImgs/goods-1.png"),
-              goodsName:"国际美妆"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-2.png"),
-              goodsName:"休闲裤"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-3.png"),
-              goodsName:"男士运动鞋"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-4.png"),
-              goodsName:"长袖T恤"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-5.png"),
-              goodsName:"连衣裙"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-6.png"),
-              goodsName:"男士卫衣"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-7.png"),
-              goodsName:"女士休闲鞋"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-8.png"),
-              goodsName:"短靴"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-9.png"),
-              goodsName:"男士夹克"
-            },
-          ] 
-        },
-        {
-          hot:false,
-          title:"你可能还喜欢",
-          goodsPro:[
-            {
-              goodsImg:require("../assets/sortImgs/goods-1.png"),
-              goodsName:"男士牛仔裤"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-2.png"),
-              goodsName:"衬衫"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-3.png"),
-              goodsName:"男袜"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-4.png"),
-              goodsName:"水乳精华"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-5.png"),
-              goodsName:"海外如唇膏"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-6.png"),
-              goodsName:"防嗮隔离"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-7.png"),
-              goodsName:"卫衣"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-8.png"),
-              goodsName:"外套"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-9.png"),
-              goodsName:"T恤"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-1.png"),
-              goodsName:"单鞋"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-2.png"),
-              goodsName:"男士内裤"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-3.png"),
-              goodsName:"女士内裤"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-4.png"),
-              goodsName:"聚拢文胸"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-5.png"),
-              goodsName:"毛衣"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-6.png"),
-              goodsName:"大衣"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-7.png"),
-              goodsName:"跑步鞋"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-8.png"),
-              goodsName:"休闲运动鞋"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-9.png"),
-              goodsName:"运动裤"
-            },
-          ] 
-        },
-        {
-          hot:false,
-          title:"精选品牌",
-          goodsPro:[
-            {
-              goodsImg:require("../assets/sortImgs/goods-1.png"),
-              goodsName:"兰芝"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-2.png"),
-              goodsName:"森马"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-3.png"),
-              goodsName:"骆驼"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-4.png"),
-              goodsName:"韩都衣舍"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-5.png"),
-              goodsName:"百丽"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-6.png"),
-              goodsName:"卓诗尼"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-7.png"),
-              goodsName:"江南布衣"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-8.png"),
-              goodsName:"都市丽人"
-            },
-            {
-              goodsImg:require("../assets/sortImgs/goods-9.png"),
-              goodsName:"耐克"
-            },
-          ] 
-        },
       ]
     }
   },
@@ -212,25 +50,18 @@ export default {
     sortShow(){
         this.$emit("show-srot",this.showSort)
     },
-    // myfecth(){
-    //   fetch('https://127.0.0.0:8000/goodsList') // 返回一个Promise对象
-    //   .then((res)=>{
-    //     return res.text() // res.text()是一个Promise对象
-    //   })
-    //   .then((res)=>{
-    //     console.log(res) // res是最终的结果
-    //   })
-    // }
-  },
-  created(){
-    console.log("实例创建完成")
-    fetch("http://localhost:8000/goodslist").then(res=>{
+    myfecth(){
+       console.log("实例创建完成")
+        fetch("http://localhost:8000/goodslist").then(res=>{
             res.json().then(data=>{
-                // this.videosInfo=data;
             console.log(data);
+            return this.sortRightData = data.sortRightData
             })
         })
-    // this.myfecth()
+    }
+  },
+  created(){
+    this.myfecth()
   },
   mounted(){
         this.sortShow()

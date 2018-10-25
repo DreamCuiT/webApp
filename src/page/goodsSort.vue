@@ -248,10 +248,11 @@ export default {
  /* header */
 .goodsSortTop{
         width:100%;
-        height:4.4em;
+        height:.44rem;
         background:#fbfbfa;
         font-size:1px;
-        display:flex;
+        /* display:flex; */
+        display: -webkit-box;
         justify-content: space-between;
         /* position:fixed;
         top:0; */
